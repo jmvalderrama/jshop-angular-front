@@ -1,0 +1,27 @@
+<h1 class="text-center mb-4">See our products</h1>
+<!-- <div class="input-group mb-3">
+  <input
+    id="typeahead-basic"
+    autocomplete="off"
+    type="text" class="form-control"
+    placeholder="Describe your product"
+    [(ngModel)]="term" />
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" (click)="search()">Search</button>
+  </div>
+</div> -->
+<hr>
+<div class="row mt-4">
+  <!-- <div class="col-md-4 col-sm-12" *ngFor="let product of products | filter: term"> -->
+  <div class="col-md-4 col-sm-12" *ngFor="let product of products">
+    <div class="card" (click)="detail(product._id)">
+      <div class="image-container">
+        <div class="product-image" [ngStyle]="{ 'background-image': 'url(' + product.file + ')'}"></div>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.price | currency }} COP</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="alert alert-success" role="alert" *ngIf="saved">
+  {{ message }}
+</div>
+<h1 class="text-center mb-4">Your order</h1>
+<hr>
+<div *ngIf="products">
+  <div class="card mb-3" *ngFor="let product of products; let i = index">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <div class="image-container">
+          <div class="product-image" [ngStyle]="{ 'background-image': 'url(' + product.file + ')'}"></div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-text">{{ product.price | currency }} COP ({{ product.quantity }})</p>
+        </div>
+        <div class="text-right">
+          <button class="btn btn-danger mb-3 mr-3" (click)="deleteProduct(i)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!products || products.length == 0">
+  <h5 class="text-center">No products in cart.</h5>
+</div>
+<hr>
+<h3 class="text-right mt-4">Total: {{ total | currency }} COP</h3>
+<form [formGroup]="orderForm" class="my-5">
+  <div class="row">
+    <div class="input-group mb-3 col-md-6 col-sm-12">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Full name</span>
+      </div>
+      <input type="text" class="form-control" formControlName="client_name">
+    </div>
+    <div class="input-group mb-3 col-md-6 col-sm-12">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Email</span>
+      </div>
+      <input type="email" class="form-control" formControlName="client_email">
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-group mb-3 col-md-6 col-sm-12">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Address</span>
+      </div>
+      <input type="text" class="form-control" formControlName="client_address">
+    </div>
+    <div class="input-group mb-3 col-md-6 col-sm-12">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Phone</span>
+      </div>
+      <input type="text" class="form-control" formControlName="client_contact">
+    </div>
+  </div>
+  <button class="btn btn-outline-success" (click)="saveOrder()" [disabled]="orderForm.invalid">Save order</button>
+</form>
