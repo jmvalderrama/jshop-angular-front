@@ -11,7 +11,7 @@ import { IOrder } from '../models/order';
 export class OrderService {
 
   cartTotal$ = new BehaviorSubject<number>(0);
-  private readonly baseUrl: string = 'http://localhost:3000/api/orders';
+  private readonly baseUrl: string = 'https://jshop-api.herokuapp.com/api/orders';
 
   constructor(
     private http: HttpClient

@@ -12,7 +12,7 @@ import { IHttpResponse } from '../models/http';
 })
 export class CategoryService {
 
-  private readonly baseUrl: string = 'http://localhost:3000/api/categories';
+  private readonly baseUrl: string = 'https://jshop-api.herokuapp.com/api/categories';
 
   constructor(
     private http: HttpClient
